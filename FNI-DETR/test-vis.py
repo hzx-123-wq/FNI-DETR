@@ -3,7 +3,7 @@ warnings.filterwarnings('ignore')
 from ultralytics import YOLO
 
 if __name__ == '__main__':
-    model = YOLO('runs/train-VisDrone/FNI-DETR/weights/best.pt')
+    model = RTDETR('runs/train-VisDrone/FNI-DETR/weights/best.pt')
     model.val(data='ultralytics/cfg/datasets/VisDrone.yaml',
               split='test',
               imgsz=640,
