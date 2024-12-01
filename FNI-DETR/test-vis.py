@@ -1,4 +1,16 @@
+import warnings
+warnings.filterwarnings('ignore')
 from ultralytics import YOLO
-model = YOLO('v8.pt')
+
 if __name__ == '__main__':
-    model.predict("ultralytics/assets/bus6.jpg", imgsz=640, save=True, device=0)
+    model = YOLO('runs/train-VisDrone/FNI-DETRweights/best.pt')
+    model.val(data='ultralytics/cfg/datasets/VisDrone.yaml',
+              split='test',
+              imgsz=640,
+              batch=1,
+              # iou=0.7,
+              # rect=False,
+              # save_json=True, # if you need to cal coco metrice
+              project='runs/test-vis',
+              name='FNI-DETR',
+              )
